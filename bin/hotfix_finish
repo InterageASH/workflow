@@ -15,7 +15,9 @@ PROJECT_NAME=$(basename -s .git `git config --get remote.origin.url`);
 
 execute bumpversion patch;
 
-execute git flow hotfix finish v$HOTFIX_NAME --message="'${PROJECT_NAME^^}'" --fetch --keepremote --showcommands
+message=$(echo $PROJECT_NAME | tr '[a-z]' '[A-Z]')
+
+execute git flow hotfix finish v$HOTFIX_NAME --message="'${message}'" --fetch --keepremote --showcommands
 
 execute git push origin develop master v${HOTFIX_NAME};
 
