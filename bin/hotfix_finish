@@ -2,7 +2,7 @@
 
 set -e;
 
-source functions;
+source config;
 
 test -f bin/ci && execute bin/ci;
 
@@ -21,6 +21,6 @@ execute git flow hotfix finish v$HOTFIX_NAME --message="'${message}'" --fetch --
 
 execute git push origin develop master v${HOTFIX_NAME};
 
-execute git flow hotfix delete $HOTFIX_NAME --remote
+execute git flow hotfix delete v$HOTFIX_NAME --remote
 
 success Hotfix finished successfully.;

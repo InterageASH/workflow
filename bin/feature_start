@@ -7,7 +7,9 @@ source config;
 TRELLO_SLUG_CARD=${1};
 FEATURE_NAME=card-$TRELLO_SLUG_CARD;
 
-execute git pull origin develop:develop;
+execute git checkout develop;
+
+execute git pull origin develop;
 
 execute git flow feature start $FEATURE_NAME;
 
