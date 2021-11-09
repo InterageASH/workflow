@@ -21,6 +21,9 @@ test -f bin/ci && execute bin/ci;
 
 execute bumpversion $NEW_VERSION;
 
+execute git fetch origin develop:develop
+execute git fetch origin master:master
+
 execute git flow release finish v$RELEASE_VERSION --message="${PROJECT_NAME}" --showcommands;
 
 execute git push origin master develop v$RELEASE_VERSION;
